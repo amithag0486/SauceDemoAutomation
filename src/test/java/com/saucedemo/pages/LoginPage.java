@@ -7,6 +7,7 @@ public class LoginPage{
 	
 	private Page page;
 	
+	
 	//URL
 	
 	private static final String URL ="https://www.saucedemo.com/";
