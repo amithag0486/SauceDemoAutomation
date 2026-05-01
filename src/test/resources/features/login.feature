@@ -3,10 +3,24 @@ Feature: SauceDemo Login
 Background:
 	Given I am on SauceDemo Login page
 	
-Scenario: Valid Login
-	When I login with username "standard_user" and password "secret_sauce"
+Scenario Outline: Valid Login
+	When I login with username <username> and password <password>
 	Then I should be redirected to the inventory page
 	
-Scenario: Invalid Login
-	When I login with username "invlaid_username" and password "secret_sauce"
+	Examples:
+	| username | password |
+	| standard_user | secret_sauce |
+	| problem_user | secret_sauce |
+	| performance_glitch_user | secret_sauce |
+	| visual_user | secret_sauce |
+	
+Scenario Outline: Invalid Login
+	When I login with username <invalidusername> and password <password>
 	Then I should get a error message
+	
+	Examples:
+	| invalidusername | password |
+	|  | secret_sauce |
+	| problem_user |  |
+	| performance_glitch_use | secret_sauce |
+	| visual_ | secret_sauce |
